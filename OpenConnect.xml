@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version='3.0' method='upgrade' xsi:noNamespaceSchemaLocation="http://raw.github.com/cedricwalter/joomla-xsd/master/component.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+    <name>OpenVPMS Connect</name>
+    <administration></administration>
+    <files>
+        <filename>controller.php</filename>
+    </files>
+</extension>
