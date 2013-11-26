@@ -17,7 +17,7 @@ JPluginHelper::importPlugin('OpenConnect');
 $app = JFactory::getApplication();
 
 //assign a default if it requests specifically
-$controller = $app->input->get('controller','default')
+$controller = $app->input->get('controller','default');
 //build the controller
         
 $classname = 'OpenConnectControllers'.ucwords($controller);
