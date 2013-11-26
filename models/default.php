@@ -18,22 +18,41 @@
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
 class OpenConnectModelsDefault extends JModelBase {
-    var $__state_set = null;
-    var $_total = null;
-    var $_pagination = null;
-    var $_db = null;
-    var $id = null;
+    protected $__state_set = null;
+    protected $_total = null;
+    protected $_pagination = null;
+    protected $_db = null;
+    protected $id = null;
+    protected $limit_start = 0;
+    protected $limit = 10;
     function __construct() {
         parent::__construct();
-        $this->_db=  JFactory::getDbo();
-        $app=  JFactory::getApplication();
-        $ids=$app->input->get("cids",null,'array');
-        $id=$app->input->get("id");
-        if($id && $id > 0){
-            $this->id=$id;}elseif(count($ids)==1) {
-            $this->id=$ids[0];}else{
-                $this->id=$ids;
-        }             
+        }
+     /* Store Data
+      * 
+      * @param array data data to be stored.
+      * 
+      * returns array Data in a row array
+      */
+     public function store($data=null){
+      $data = $data ? $data : JInput::get('post');
+      $row = JTable::getInstance($data['table'],'table');
+      $date = date("Y-m-d H:i:s");
+      if(!$row->bind($data)){
+          return false;      
+     }
+     $row->modified = $date;
+     if(!$row->created){
+         $row->created = $date;
+     }
+     if(!$row->check()){
+         return false;
+     }
+     if(!$row->store())
+     {
+         return false;
+     }
+     return $row;
      }
      /**
 * Modifies a property of the object, creating it if it does not already exist.
