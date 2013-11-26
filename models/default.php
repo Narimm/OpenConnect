@@ -69,18 +69,49 @@ class OpenConnectModelsDefault extends JModelBase {
          $this->$property = $value;
          return $previous;
      }
+     
+     public function get($property,$default=null)
+     {
+         return isset($this->$property)?$this->$property:$default;
+     }
+     /*
+      * Builds a query and where clause and returns the object
+      */
+     public function getItem()
+     {
+         $db = JFactory::getDbo();
+         $query = $this->_buildquery();
+         $this->_buildwhere($query);
+         $db->setQuery($query);
+         $item = $db->loadObject();
+         return $item;
+     }
      /**
-* Gets an array of objects from the results of database query.
-*
-* @param string $query The query.
-* @param integer $limitstart Offset.
-* @param integer $limit The number of records.
-*
-* @return array An array of results.
-*
-* @since 11.1
-*/
-public function _getList($query,$limitStart,$limit){
+     * Build query and where for protected _getList function and return a list
+     *
+     * @return array An array of results.
+     */
+    public function ListItems()
+    {
+    $query = $this->_buildQuery();
+    $query = $this->_buildWhere($query);
+    $list = $this->_getList($query, $this->limitstart, $this->limit);
+
+    return $list;
+    }
+
+    /**
+     * Gets an array of objects from the results of database query.
+     *
+     * @param string $query The query.
+     * @param integer $limitstart Offset.
+     * @param integer $limit The number of records.
+     *
+     * @return array An array of results.
+     *
+     * @since 11.1
+     */
+protected function _getList($query,$limitStart,$limit){
     $db=  JFactory::getDbo();
     $db->setQuery($query, $limitStart, $limit);
     $result=$db->loadObjectList();

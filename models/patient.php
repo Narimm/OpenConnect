@@ -19,16 +19,41 @@
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
 class OpenConnectModelsPatient extends OpenConnectModelsDefault{
+    var $_patient_id = null;
+    var $_user_id = null;
+    var $_customer_id = null;
+    var $_total       = null;
+    var $_pagination  = null;
+    var $_published   = 1;
+    var $_reminderdue = FALSE;
+    
+    
     function __construct() {
         parent::__construct();
     }
-    function getPatient(){
+    protected function _buildquery() {
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(TRUE);
+        $query -> select('p.patient_id, p.user_id,p.customer_id,p.openvpms_patient_id,p.name,p.description,p.dob,p.created_date,p.modified_date,p.image,');
+        $query -> from('#__openconnect_patients as p');
+        $query -> select(`r.reminder_id`);
+        $query -> leftjoin(`#__openconnect_preminder as r on r.patient_id = p.patient_id`);
         
-    }
-    function getPatients(){
-        
-    }
-    function populateState(){
-        
-    }
+        return $query;
+}
+ /**
+* Builds the filter for the query
+* @param object Query object
+* @return object Query object
+*
+*/
+       protected function _buildWhere(&$query)
+{
+if(is_numeric($this->_patient_id)){$query->where('p.patient_id = ' . (int) $this->_patient_id);}
+if(is_numeric($this->_user_id)){$query->where('p.user_id = ' . (int) $this->_user_id);}
+if(is_numeric($this->_customer_id)){$query->where('p.customer_id = ' . (int) $this->_customer_id);}
+if($this->_reminderdue){$query->where('r.reminder_id > 0');}
+$query->where('p.published = ' . (int) $this->_published);
+return $query;
+}
 }
