@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" version='3.0' method='upgrade' xsi:noNamespaceSchemaLocation="http://raw.github.com/cedricwalter/joomla-xsd/master/component.xsd"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+    <creationDate>November 2009</creationDate>
+    <author>Ben Charlton</author>
+    <authorEmail>jbenjicharlton@gmail.com</authorEmail>
     <name>OpenVPMS Connect</name>
+    <version>0.0.1</version>
     <administration></administration>
     <files>
         <filename>controller.php</filename>
+        <filename>OpenConnect.php</filename>
+        <filename>index.html</filename>
+        <filename>controller.php</filename>
+        <folder>views</folder>
     </files>
 </extension>
