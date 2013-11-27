@@ -15,4 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
+class OpenConnectViewsProfileHtml extends JViewHtml
+{
+    function render() {
+        $app=  JFactory::getApplication();
+        $layout= $app->input->get('layout');
+        //retrieve the 
+        
+        
+        
+        return parent::render();
+    }
+}
