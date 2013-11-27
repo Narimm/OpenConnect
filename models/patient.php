@@ -61,7 +61,7 @@ public function getItem() {
 if(is_numeric($this->_patient_id)){$query->where('p.patient_id = ' . (int) $this->_patient_id);}
 if(is_numeric($this->_user_id)){$query->where('p.user_id = ' . (int) $this->_user_id);}
 if(is_numeric($this->_customer_id)){$query->where('p.customer_id = ' . (int) $this->_customer_id);}
-if($this->_reminderdue){$query->where('r.reminderdueDate <= DATE()';}
+if($this->_reminderdue){$query->where('r.reminderdueDate <= DATE()');}
 $query->where('p.alive = ' . (int) $this->_alive);
 return $query;
 }
