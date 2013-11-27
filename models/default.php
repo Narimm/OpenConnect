@@ -70,7 +70,13 @@ class OpenConnectModelsDefault extends JModelBase {
          $this->$property = $value;
          return $previous;
      }
-     
+     /*Method to return the value of a property
+      * 
+      * @param string $property The item to return
+      * @param mixed optional $default Default value of the param
+      * 
+      * @return the value of the property or null if not set.
+      */
      public function get($property,$default=null)
      {
          return isset($this->$property)?$this->$property:$default;

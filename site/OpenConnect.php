@@ -13,6 +13,8 @@ JTable::addIncludePath(JPATH_COMPONENT.'/tables');
 JLoader::registerPrefix('OpenConnect', JPATH_COMPONENT);
 //Load plugins
 JPluginHelper::importPlugin('OpenConnect');
+//Load Style Helpers css and js files
+OpenConnectHelpersStyle::load();
 //application
 $app = JFactory::getApplication();
 

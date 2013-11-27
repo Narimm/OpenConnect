@@ -22,7 +22,7 @@ class OpenConnectControllersDefault extends JControllerBase {
     public function execute() {
         $app = $this->getApplication();
         $document = $app->getDocument();
-        $viewname = $app->input->getWord('layout','default');
+        $viewname = $app->input->getWord('view','profile');
         $viewformat = $document->getType();
         $layoutname = $app->input->getWord('layout', 'list');
         
@@ -33,7 +33,7 @@ class OpenConnectControllersDefault extends JControllerBase {
         $paths->insert(JPATH_COMPONENT.`/views/`.$viewname.`/tmpl/`.`normal`);
         $viewClass = 'OpenConnectViews'. ucfirst($viewname).ucfirst($viewformat);
         $modelClass = 'OpenConnectModels'.ucfirst($viewname);
-        if (fasle === class_exists($modelClass)){
+        if (false === class_exists($modelClass)){
            $modelClass = 'OpenConnectModelsDefault';
        }
         $view= new $viewClass(new $modelClass, $paths);

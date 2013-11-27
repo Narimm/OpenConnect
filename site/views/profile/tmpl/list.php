@@ -1,6 +1,4 @@
-<?php
-
-/* 
+<!--/* 
  * Copyright 2013 benjamincharlton.
  *
  * Licensed under the Charlton Disc Trust License (the "License");
@@ -14,5 +12,11 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
+ */-->
+    <h2 class="page-header"><?php echo JText::_('COM_OPENCONNECT_PROFILES'); ?></h2>
+    <div class="row-fluid">
+    <?php for($i=0, $n = count($this->profiles);$i<$n;$i++) {
+    $this->_profileListView->profile = $this->profiles[$i];
+    echo $this->_profileListView->render();
+    } ?>
+    </div>
