@@ -24,7 +24,7 @@ class OpenConnectControllersDefault extends JControllerBase {
         $document = $app->getDocument();
         $viewname = $app->input->getWord('layout','default');
         $viewformat = $document->getType();
-        $layoutname = $app->input->getWord('layout', 'default');
+        $layoutname = $app->input->getWord('layout', 'list');
         
         $app->input->set('view', $viewname);
         

@@ -25,6 +25,7 @@ class OpenConnectModelsDefault extends JModelBase {
     protected $id = null;
     protected $limit_start = 0;
     protected $limit = 10;
+    
     function __construct() {
         parent::__construct();
         }
@@ -93,9 +94,9 @@ class OpenConnectModelsDefault extends JModelBase {
      */
     public function ListItems()
     {
-    $query = $this->_buildQuery();
-    $query = $this->_buildWhere($query);
-    $list = $this->_getList($query, $this->limitstart, $this->limit);
+    $query = $this->_buildquery();
+    $queryw = $this->_buildwhere($query);
+    $list = $this->_getList($queryw, $this->limitstart, $this->limit);
 
     return $list;
     }

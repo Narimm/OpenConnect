@@ -24,9 +24,9 @@ class OpenConnectModelsPatient extends OpenConnectModelsDefault{
     var $_customer_id = null;
     var $_total       = null;
     var $_pagination  = null;
-    var $_published   = 1;
+    var $_alive  = 1;
     var $_reminderdue = FALSE;
-    
+    //_reminderdue set True will return only patients with a reminder due.  
     
     function __construct() {
         parent::__construct();
@@ -36,12 +36,21 @@ class OpenConnectModelsPatient extends OpenConnectModelsDefault{
         $query = $db->getQuery(TRUE);
         $query -> select('p.patient_id, p.user_id,p.customer_id,p.openvpms_patient_id,p.name,p.description,p.dob,p.created_date,p.modified_date,p.image,');
         $query -> from('#__openconnect_patients as p');
-        $query -> select(`r.reminder_id`);
+        $query -> select(`r.reminder_id,r.reminder_dueDate`);
         $query -> leftjoin(`#__openconnect_preminder as r on r.patient_id = p.patient_id`);
         
         return $query;
 }
- /**
+public function getItem() {
+    $patient = parent::getItem();
+    $reminderModel = new OpenConnectModelsReminder();
+    $reminderModel->set('_patient_id',$patient->_patient_id);
+    $patient->reminders = $reminderModel->ListItems();
+    return $patient;
+}
+
+
+/**
 * Builds the filter for the query
 * @param object Query object
 * @return object Query object
@@ -52,8 +61,8 @@ class OpenConnectModelsPatient extends OpenConnectModelsDefault{
 if(is_numeric($this->_patient_id)){$query->where('p.patient_id = ' . (int) $this->_patient_id);}
 if(is_numeric($this->_user_id)){$query->where('p.user_id = ' . (int) $this->_user_id);}
 if(is_numeric($this->_customer_id)){$query->where('p.customer_id = ' . (int) $this->_customer_id);}
-if($this->_reminderdue){$query->where('r.reminder_id > 0');}
-$query->where('p.published = ' . (int) $this->_published);
+if($this->_reminderdue){$query->where('r.reminderdueDate <= DATE()';}
+$query->where('p.alive = ' . (int) $this->_alive);
 return $query;
 }
 }
