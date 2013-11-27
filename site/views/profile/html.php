@@ -16,3 +16,32 @@
  * limitations under the License.
  */
 
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
+class OpenConnectViewsProfileHtml extends JViewHtml
+{
+    function render() {
+        $app = JFactory::getApplication();
+        $layout = $app->input->get('layout');
+        $profileModel = new OpenConnectModelsProfile();
+        
+        $this->_modalMessage = OpenConnectHelpersView::load('Profile','_message','phtml')
+        
+        switch ($layout) {
+            case 'profile':
+                $this->profile = $profileModel->getItem();
+                $this->_addPatientView = OpenConnectHelpersView::load('Patient','_add','phtml');
+                $this->_customerView = OpenConnectHelpersView::load('Customer','_customer','phtml');
+                $this->_customerView->customer = $this->profile->customer;
+                $this->_patientlistView = OpenConnectHelpersView::load('PatientList','_patientlist','phtml');
+                $this->_patientlistView->patientlist = $this->profile->patientlist;
+               break;
+            case 'list':
+                default:
+                $this->profiles = $profileModel->ListItems();
+                $this->_profileListView = OpenConnectHelpersView::load('Profile','_entry','phtml');
+                break;
+        }
+        //displayu
+        return parent::render();
+    }
+}
