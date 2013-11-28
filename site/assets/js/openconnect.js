@@ -22,7 +22,7 @@
     });
 
     jQuery.ajax({
-        url: 'index.php?option=com_openconnect&controller=add&format=raw&tmpl=component',
+        url: 'index.php?option=com_OpenConnect&controller=add&format=raw&tmpl=component',
         type: 'POST',
         data: patientInfo,
         dataType: 'JSON',
@@ -36,5 +36,31 @@
             }
         }
     });
+}
+//add a review
+function addReminder()
+{
+  var reminderInfo = {};
+  jQuery("#reminderForm :input").each(function(idx,ele){
+    reviewInfo[jQuery(ele).attr('name')] = jQuery(ele).val();
+  });
+ 
+  jQuery.ajax({
+    url:'index.php?option=com_OpenConnect&controller=add&format=raw&tmpl=component',
+    type:'POST',
+    data:reminderInfo,
+    dataType:'JSON',
+    success:function(data)
+    {
+      if ( data.success ){
+        console.log(data.html);
+        jQuery("#reminder-list").append(data.html);
+        jQuery("#newReminderModel").modal('hide');
+      }else{
+ 
+      }
+    }
+  });
+ 
 }
 

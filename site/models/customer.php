@@ -30,7 +30,7 @@ Class OpenConnectModelsCustomer extends OpenConnectModelsDefault
 {
     var $_customer_id = null;
     var $_user_id = null;
-    var $_openvpms_customer_id = null;
+    var $_opvms_customer_id = null;
     var $_total       = null;
     var $_pagination  = null;
     var $_published   = 1;

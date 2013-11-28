@@ -1,10 +1,9 @@
 <?php
-
-/* 
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ **/
 defined('_JEXEC') or die('Restricted access');
 jimport('joomla.session.session');
 //load tables
@@ -19,7 +18,7 @@ OpenConnectHelpersStyle::load();
 $app = JFactory::getApplication();
 
 //assign a default if it requests specifically
-$controller = $app->input->get('controller','default');
+$controller = $app->input->get('controller', 'default');
 //build the controller
         
 $classname = 'OpenConnectControllers'.ucwords($controller);

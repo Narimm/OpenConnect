@@ -25,10 +25,10 @@
     $document = JFactory::getDocument();
      
     //stylesheets
-    $document->addStylesheet(JURI::base().'components/com_openconnect/assets/css/style.css');
+    $document->addStylesheet(JURI::base().'components/com_OpenConnect/assets/css/style.css');
      
     //javascripts
-    $document->addScript(JURI::base().'components/com_openconnect/assets/js/lendr.js');
+    $document->addScript(JURI::base().'components/com_OpenConnect/assets/js/lendr.js');
     }
     }
 

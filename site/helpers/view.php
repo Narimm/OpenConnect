@@ -51,6 +51,16 @@ class OpenConnectHelpersView
         }
         return $view;
     }
+    /*Loads a partial view located earlier in the View Helper file, and then 
+     * once loaded it renders that view out to a variable.
+     * 
+     * @param string $view name of a view
+     * @param string $layout type of layout eg list or profile etc
+     * @param string $item an item represented on the view
+     * @param mixed $data an array or var containing data from the item.
+     * 
+     * @return $html the rendered contents of the file referred to by the variables.
+     */
     function getHtml($view,$layout,$item,$data)
     {
         $objectView = OpenConnectHelpersView::load($view,$layout,'phtml');
@@ -61,6 +71,6 @@ class OpenConnectHelpersView
         ob_clean();
         
         return $html;
-        
+ 
     }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */-->
 
-    <a href="<?php echo JRoute::_('index.php?option=com_openconnect&view=profile&layout=list'); ?>" class="btn pull-right"><i class="icon icon-chevron-left"></i> <?php echo JText::_('COM_OPENCONNECT_BACK'); ?></a>
+    <a href="<?php echo JRoute::_('index.php?option=com_OpenConnect&view=profile&layout=list'); ?>" class="btn pull-right"><i class="icon icon-chevron-left"></i> <?php echo JText::_('COM_OPENCONNECT_BACK'); ?></a>
     <h2 class="page-header"><?php echo $this->profile->name; ?></h2>
     <div class="row-fluid">
     <div class="span3">
