@@ -26,7 +26,6 @@ class OpenConnectViewsProfileHtml extends JViewHtml {
         $profileModel = new OpenConnectModelsProfile();
 
         $this->_modalMessage = OpenConnectHelpersView::load('Profile', '_message', 'phtml');
-
         switch ($layout) {
             case 'profile':
                 $this->profile = $profileModel->getItem();

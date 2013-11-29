@@ -18,7 +18,7 @@
     <h2 class="page-header"><?php echo $this->profile->name; ?></h2>
     <div class="row-fluid">
     <div class="span3">
-    <img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($this->profile->email))); ?>?s=180" />
+    <img alt='Gravatar' src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($this->profile->email))); ?>?s=180" />
     </div>
     <div class="span9 well well-small">
     <dl class="dl-horizontal">

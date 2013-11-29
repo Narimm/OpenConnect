@@ -1,5 +1,4 @@
-v <?php
-
+<?php
 /**
  * Copyright 2013 benjamincharlton.
  *
@@ -7,13 +6,16 @@ v <?php
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *  http://www.binpress.com/license/view/l/1556fb36cdde3bbd81965401e9ebe417
- *
+ * @license http://www.binpress.com/license/view/l/1556fb36cdde3bbd81965401e9ebe417
+ * @link  description
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * @author John Doe <john.doe@example.com>
+ * @package com_OpenConnect
  **/
 defined('_JEXEC') or die('Restricted access'); 
 //load classes
